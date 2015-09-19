@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'balance_checker'
+require 'optparse'
+
+options = Hash.new { |h, k| h[k] = {} }
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{opts.program_name} [options]"
+
+  opts.on("-cCONFIGFILE", "--config=CONFIGFILE", "Path to yaml config") do |v|
+    options[:config_file] = v
+  end
+  opts.on_tail("-v", "--version", "Show program version and exit") do |v|
+    puts BalanceChecker::VERSION
+    exit
+  end
+
+end.parse!
+
+BalanceChecker.configure_with(options.fetch(:config_file))
+BalanceChecker.run!

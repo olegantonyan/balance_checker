@@ -1,0 +1,19 @@
+providers:
+  -
+    name: tis_dialog
+    login: 12345
+    password: 6789
+
+notifiers:
+  -
+    name: 'email'
+    config:
+      smtp:
+        address: smtp.gmail.com
+        port: 587
+        authentication: login
+        user_name: my_awesome_balance_checker@gmail.com
+        password: 12345678
+        enable_starttls_auto: true
+
+threshold: 600
