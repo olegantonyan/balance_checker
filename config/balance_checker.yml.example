@@ -8,6 +8,7 @@ notifiers:
   -
     name: 'email'
     config:
+      to: me@domain.com
       smtp:
         address: smtp.gmail.com
         port: 587
