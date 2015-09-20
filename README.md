@@ -7,22 +7,49 @@ Easy way to auto-check your ISP balance (for those retarted providers who lack o
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'balance_checker'
+gem 'balance_checker', github: 'olegantonyan/balance_checker'
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
-    $ gem install balance_checker
+    $ git clone git@github.com:olegantonyan/balance_checker.git
+    $ cd balance_checker
+    $ bundle install
 
 ## Usage
 
+Check `config/balance_checker.yml.example` for configuration options.
+
+`providers`: array of available providers. Name must match with class name inside `providers/` directory (either class_name == ClassName);
+`notifiers`: same as providers. Each notifier gets called for each provider when threshold is reached;
+`threshold`: when your balance falls below this number you will be notified. To disable notification use -10000000 or something like that.
+
 ### As standalone program
 
+    $ cd balance_checker
+    $ bundle exec ./bin/balance_checker -c /path/to/config.yml #leave -c option to use default config/balance_checker.yml (don't forget to create it)
+
+For convenience you can wrap it into shell script and run via cron, for example.
+
 ### As gem
+
+Somewhere in initializer add
+```ruby
+BalanceChecker.configure_with '/path/to/config/file.yml'
+```
+Or alternatively you can user hash instead of config file with same structure
+```ruby
+BalanceChecker.configure {providers: [...], notifiers: [...], threshold: 50}
+```
+Then to run it
+```ruby
+BalanceChecker.run!
+```
+Note: this call will block until finished. Use it in separate thread/background worker only.
 
 ## Development
 
