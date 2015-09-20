@@ -24,9 +24,9 @@ Or install it yourself as:
 
 Check `config/balance_checker.yml.example` for configuration options.
 
-`providers`: array of available providers. Name must match with class name inside `providers/` directory (either class_name == ClassName);
-`notifiers`: same as providers. Each notifier gets called for each provider when threshold is reached;
-`threshold`: when your balance falls below this number you will be notified. To disable notification use -10000000 or something like that.
+* `providers`: array of available providers. Name must match with class name inside `providers/` directory (either class_name == ClassName);
+* `notifiers`: same as providers. Each notifier gets called for each provider when threshold is reached;
+* `threshold`: when your balance falls below this number you will be notified. To disable notification use -10000000 or something like that.
 
 ### As standalone program
 
