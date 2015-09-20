@@ -1,5 +1,7 @@
 # BalanceChecker
 
+Easy way to auto-check your ISP balance (for those retarted providers who lack of this functionality). Only one provider (TisDialog) supported at this time, but it's easy to implement another. Just create a class withing `providers` directory and implement `check` method returning a number.
+
 ## Installation
 
 Add this line to your application's Gemfile:
