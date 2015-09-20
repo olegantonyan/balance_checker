@@ -17,5 +17,5 @@ OptionParser.new do |opts|
 
 end.parse!
 
-BalanceChecker.configure_with(options.fetch(:config_file))
+BalanceChecker.configure_with(options.fetch(:config_file, "#{File.dirname(__FILE__)}/../config/balance_checker.yml"))
 BalanceChecker.run!

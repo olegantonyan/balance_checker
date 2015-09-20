@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Oleg Antonyan"]
   spec.email         = ["oleg.b.antonyan@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Utility to check your balance on ISP website and notify you when it's low}
+  spec.description   = %q{Logins to a given site, parses it to retrieve required number and notifies you when it's lower the threshold}
+  spec.homepage      = "https://github.com/olegantonyan/balance_checker"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

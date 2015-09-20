@@ -20,16 +20,16 @@ module BalanceChecker
     begin
       config = YAML::load(IO.read(path_to_yaml_file))
     rescue Errno::ENOENT
-      log(:warning, "YAML configuration file couldn't be found. Using defaults."); return
+      warn("YAML configuration file couldn't be found. Using defaults"); return
     rescue Psych::SyntaxError
-      log(:warning, "YAML configuration file contains invalid syntax. Using defaults."); return
+      warn("YAML configuration file contains invalid syntax. Using defaults"); return
     end
     configure(config.deep_symbolize_keys)
   end
 
   def self.run!
     config[:providers].each do |prov|
-      provider = Providers.by_name(prov[:name]).new(prov)
+      provider = Providers.by_config(prov)
       balance = provider.check
       message = "#{provider.class.to_s} balance is #{balance}"
       puts message
@@ -45,8 +45,7 @@ module BalanceChecker
 
   def self.notify message
     config[:notifiers].each do |noti|
-      notifier = Notifiers.by_name(noti[:name]).new(noti)
-      notifier.deliver message
+      Notifiers.by_config(noti).deliver(message)
     end
   end
 

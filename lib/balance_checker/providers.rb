@@ -5,9 +5,9 @@ Dir["#{File.dirname(__FILE__)}/#{File.basename(__FILE__, '.*')}/*.rb"].each {|fi
 module Providers
   AVAILABLE = self.constants.select {|c| self.const_get(c).is_a? Class}.map{|c| c.to_s.underscore }
 
-  def self.by_name(str)
-    raise ArgumentError, "no such provider #{str}" unless AVAILABLE.include?(str)
-    "#{self.to_s}::#{str.classify}".constantize
+  def self.by_config(cfg)
+    raise ArgumentError, "no such provider #{cfg[:name]}" unless AVAILABLE.include?(cfg[:name])
+    "#{self.to_s}::#{cfg[:name].classify}".constantize.new cfg
   end
 
 end
