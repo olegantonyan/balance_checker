@@ -35,6 +35,9 @@ module BalanceChecker
       puts message
       notify(message) if notify?(balance)
     end
+  rescue => e
+    notify "#{e.class}: #{e.to_s}"
+    raise
   end
 
   private
