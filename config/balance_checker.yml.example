@@ -16,5 +16,11 @@ notifiers:
         user_name: my_awesome_balance_checker@gmail.com
         password: 12345678
         enable_starttls_auto: true
+  -
+    name: 'slackchat'
+    config:
+      webhook_url: 'https://hooks.slack.com/services/.....'
+      channel: '#general'
+      icon_emoji: ':scream:'
 
 threshold: 600

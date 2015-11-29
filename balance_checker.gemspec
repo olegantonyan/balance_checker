@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_runtime_dependency "mechanize"
   spec.add_runtime_dependency "activesupport"
+  spec.add_runtime_dependency "slack-notifier"
 end
